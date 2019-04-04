@@ -1,0 +1,106 @@
+body{
+  font-family:"Trebuchet MS", Helvetica, sans-serif;
+  margin:0;
+}
+#logo{
+  border-radius:50%;
+  margin: 10px 20px 25px 50px;
+  width:80px;
+}
+header{
+  text-align: center;
+}
+h1{
+  display:inline-block;
+  vertical-align:top;
+  margin:35px auto;
+  font-size: 39px;
+  border-bottom:7px solid #f7f020;
+  border-radius: 10px;
+}
+#slider img{
+  width:900px;
+  height:600px;
+  margin-left:100px;
+  margin-top:75px;
+  border:2.2px solid #cececc;
+  border-radius:6px;
+  transition:1s;
+}
+form{
+  position:absolute;
+  border:2px solid #f7f7f7;
+  right:200px;
+  top:250px;
+  width:15%;
+  border-radius:2%;
+  padding:1px 40px 60px 40px;
+  background-color: #f7f7f7;
+  box-shadow: 0 10px 13px 0 rgba(0,0,0,0.2), 0 13px 16px rgba(0,0,0,0.15);
+
+}
+.form-container{
+  margin-top:-10px;
+}
+p{
+  font-size: 35px;
+  font-weight: bold;
+  text-align:center;
+  padding-bottom:5px;
+  border-bottom: 3px solid #2b2b2b;
+}
+label{
+  font-size:20px;
+  display:block;
+  padding:10px;
+}
+input{
+  display:block;
+  width:80%;
+  height:20px;
+  padding:5px;
+  font-family:cursive;
+  font-size:15px;
+}
+.buttons{
+  position:relative;
+  margin-top:20px;
+  height:20px;
+}
+
+#submit{
+  position:absolute;
+  top:10px;
+  left:0;
+  width:110px;
+  height:37px;
+  background-color: #00ce2c;
+  font-family: system-ui;
+  font-size: 16px;
+  font-weight:bold;
+  color:white;
+  cursor: pointer;
+  border:none;
+  border-radius:10px;
+  box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+#reset{
+  position:absolute;
+  top:10px;
+  right:0;
+  width:110px;
+  height:37px;
+  background-color: #00ce2c;
+  font-family: system-ui;
+  font-size: 16px;
+  font-weight: bold;
+  color:white;
+  cursor: pointer;
+  border:none;
+  border-radius:10px;
+  box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2), 0 4px 15px 0 rgba(0,0,0,0.19);
+}
+#submit:hover, #reset:hover{
+  background-color:#01b228;
+  transition:.5s;
+}
