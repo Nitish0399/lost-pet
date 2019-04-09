@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Logged In</title>
+    <link rel="stylesheet" href="../CSS/edit-info.css">
+  </head>
+  <body>
+    <section class="vertical-nav">
+      <img id="logo" src="../Pet images/logo.png" alt="LOGO">
+      <h1>Animal Care</h1>
+      <p>Search Menu</p>
+      <nav>
+        <a href="">Show Animal Details</a>
+        <a href="edit-info.html">Edit Selected Animal</a>
+        <a href="">Change Animal Status</a>
+        <a href="">Add Animals</a>
+        <a href="search-pet.html">New Search</a>
+      </nav>
+    </section>
+    <main id="wrapper">
+      <div id="header">
+
+      </div>
+        <form action="" method="post">
+            <ul>
+              <li>Type of Animal</li>
+              <select name="pet-type">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+              </select>
+              <br>
+              <li>Date Picked Up</li>
+              <input type="date" name="date_of_pickup" id="d-p-u">
+              <br>
+              <li>Address</li>
+              <input type="text" id="Address" name="Address">
+              <br>
+              <li>City</li>
+              <input type="text" id="City" name="City">
+              <br>
+              <li>State</li>
+              <input type="text" id="State" name="State">
+              <br>
+              <li>Breed</li>
+              <input type="text" id="Breed" name="Breed">
+              <br>
+              <li>Sex</li>
+              <select name="sex">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <br>
+              <li>Colour</li>
+              <input type="text" id="text" name="Colour">
+              <br>
+            </ul>
+          <button type="submit" onclick="submitted()" id="submit">Submit</button>
+        </form>
+      <button type="button">Back</button>
+    </main>
+    <script src="../JavaScript/edit-script.js"></script>
+    <footer>
+    </footer>
+  </body>
+</html>
