@@ -73,6 +73,11 @@ footer{
   background-color: #fff954;
   width:100%;
 }
+footer p{
+  text-align:center;
+  font-size:20px;
+  font-weight:normal;
+}
 .ft{
   display:inline-block;
 }

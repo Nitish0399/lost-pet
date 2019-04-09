@@ -44,9 +44,9 @@ main{
   height:600px;
   margin: 100px 500px 0 0;
   border: 1px solid black;
-  padding-bottom:50px;
+  padding-bottom:80px;
   position:relative;
-  box-shadow:5px 5px gray;
+  box-shadow:0 6px 9px 0 rgba(0,0,0,0.7);
 }
 main h2{
   margin:326px 70px 0 70px;
@@ -61,28 +61,23 @@ main img{
   top:20px;
   left:130px;
 }
+
 ul{
   margin-top:30px;
 }
-#keys li{
+ul li{
+  display:inline-block;
   margin:8px 10px 0 10px;
-  padding-right:60px;
+  padding-right:40px;
   border-right:1px dashed gray;
   list-style: none;
   font-weight:bold;
+  width:29%;
 }
-#keys{
+form button{
   position:absolute;
-  width:50%;
-}
-#values{
-  position:absolute;
-  width:50%;
-  right:0;
-}
-#values li{
-  margin:8px 0 0 0;
-  list-style:none;s
+  left: 300px;
+  bottom:10px;
 }
 main button{
   position:absolute;
