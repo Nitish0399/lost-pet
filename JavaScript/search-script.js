@@ -1,6 +1,7 @@
 var animals=[
   {
     Type_of_Animal:"Dog",
+    Date_Picked_up:"01-03-2019",
     Address:"9th Downing Street",
     City: "New York City",
     State: "New York",
@@ -10,6 +11,7 @@ var animals=[
   },
   {
     Type_of_Animal:"Cat",
+    Date_Picked_up:"29-02-2019",
     Address:"Main Suburb Centre",
     City: "Olympia",
     State: "Washington",
@@ -36,6 +38,7 @@ else {
     {
         html=html+"<ul>";
         html=html+"<li>"+animals[i].Type_of_Animal+"</li>";
+        html=html+"<li>"+animals[i].Date_Picked_up+"</li>";
         html=html+"<li>"+animals[i].Address+"</li>";
         html=html+"<li>"+animals[i].City+"</li>";
         html=html+"<li>"+animals[i].State+"</li>";
