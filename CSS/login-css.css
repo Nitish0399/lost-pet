@@ -106,7 +106,7 @@ input{
 }
 .wrap{
   height:783px;
-  background: linear-gradient(to left,#ffffb5,#cdffc1 60%);
+  background: linear-gradient(to left,#ffffb5,#cdffc1 70%);
   border:1px solid black;
 }
 footer{
