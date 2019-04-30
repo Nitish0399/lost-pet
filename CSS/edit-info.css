@@ -1,4 +1,5 @@
 body{
+  background-color:#f7f7f7;
   font-family:"Trebuchet MS", Helvetica, sans-serif;
   margin:0;
 }
@@ -32,12 +33,19 @@ h1{
 .vertical-nav a{
   display:block;
   font-size:18px;
-  border:1px solid blue;
-  margin:9px 70px 0 60px;
-  padding:7px 9px;
+  border:1.6px solid lightblue;
+  margin:9px 55px 0 60px;
+  padding:7px 10px 7px 10px;
   text-decoration:none;
 }
+.vertical-nav a:hover{
+  transition: 0.2s;
+  transform:scale(1.05);
+  border:1.5px solid black;
+  color:black;
+}
 main{
+  background-color:white;
   float:right;
   position:relative;
   width: 30%;
