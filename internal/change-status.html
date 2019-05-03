@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Logged In</title>
-    <link rel="stylesheet" href="../CSS/search-pet.css">
+    <link rel="stylesheet" href="../CSS/change-status-css.css">
   </head>
   <body>
     <section class="vertical-nav">
@@ -21,24 +21,14 @@
       <div id="header">
 
       </div>
-      <div id="keys">
-        <ul>
-          <li>Type of Animal</li>
-          <li>Date Picked Up</li>
-          <li>Address</li>
-          <li>City</li>
-          <li>State</li>
-          <li>Breed</li>
-          <li>Sex</li>
-          <li>Colour</li>
-        </ul>
-      </div>
-      <div id="values">
-
-      </div>
+        <form action="" method="post">
+          <p class="status">Change Status : <span>ACTIVE</span></p>
+          <p> Click on the status value to change </p>
+          <button type="submit" onclick="submitted()" id="submit">Save</button>
+        </form>
       <button type="button" id="back">Back</button>
     </main>
-    <script src="../JavaScript/search-script.js"></script>
+    <script src="../JavaScript/change-status.js"></script>
     <footer>
     </footer>
   </body>
