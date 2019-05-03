@@ -34,6 +34,8 @@ h1{
 }
 .main-nav a:hover{
   color:#ccc;
+  border-right:1px solid black;
+  transition: 0.1s;
 }
 
 body{

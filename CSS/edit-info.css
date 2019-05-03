@@ -37,6 +37,7 @@ h1{
   margin:9px 55px 0 60px;
   padding:7px 10px 7px 10px;
   text-decoration:none;
+  background-color: white;
 }
 .vertical-nav a:hover{
   transition: 0.2s;
@@ -47,9 +48,9 @@ h1{
 main{
   background-color:white;
   float:right;
-  position:relative;
+  /* position:relative; */
   width: 30%;
-  height:600px;
+  height:650px;
   margin: 100px 500px 0 0;
   border: 1px solid black;
   padding-bottom:80px;
@@ -81,14 +82,50 @@ ul li{
   list-style: none;
   font-weight:bold;
   width:29%;
+  font-size: 18px;
 }
-form button{
-  position:absolute;
-  left: 300px;
-  bottom:10px;
+input{
+  width: 180px;
+  height: 20px;
+  font-size: 17px;
 }
-main button{
-  position:absolute;
-  right:30px;
-  bottom: 10px;
+select{
+  font-size:17px;
+}
+#submit{
+  position: absolute;
+    left: 340px;
+    bottom: 25px;
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: #e52929;
+    color: white;
+    font-family: unset;
+    box-shadow: 0 6px 5px 0 rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+#back{
+  position: absolute;
+    right: 50px;
+    bottom: 25px;
+    width: 70px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: slategray;
+    color: white;
+    font-family: unset;
+    box-shadow: 0 6px 5px 0 rgba(0,0,0,0.1);
+    border-radius: 3px;
+}
+#submit:hover{
+  background-color: #ce1a1a;
+}
+
+#back:hover{
+  background-color: #696c72;
 }
