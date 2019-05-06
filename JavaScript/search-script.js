@@ -1,6 +1,6 @@
-var animals=[
+var pets=[
   {
-    Type_of_Animal:"Dog",
+    Type_of_Pet:"Dog",
     Date_Picked_up:"01-03-2019",
     Address:"9th Downing Street",
     City: "New York City",
@@ -10,7 +10,7 @@ var animals=[
     Colour:"Brown"
   },
   {
-    Type_of_Animal:"Cat",
+    Type_of_Pet:"Cat",
     Date_Picked_up:"29-02-2019",
     Address:"Main Suburb Centre",
     City: "Olympia",
@@ -23,28 +23,28 @@ var animals=[
 
 var html="";
 var con=false;
-var animal_search=prompt("What is the breed of the Animal?");
-if(animal_search==null || animal_search=="")
+var pet_search=prompt("What is the breed of the Pet?");
+if(pet_search==null || pet_search=="")
 {
   document.getElementById("wrapper").innerHTML="No Results Found";
 }
 else {
   var header='<img src="../Pet images';
-  header=header+ "/"+animal_search.toLowerCase() +  '.jpg">' +  "<h2>Details of breed - " + animal_search.toUpperCase() + "</h2>";
+  header=header+ "/"+pet_search.toLowerCase() +  '.jpg">' +  "<h2>Details of breed - " + pet_search.toUpperCase() + "</h2>";
   document.getElementById("header").innerHTML=header;
-  for(var i=0;i<animals.length;i++)
+  for(var i=0;i<pets.length;i++)
   {
-    if(animal_search.toLowerCase()==animals[i].Breed.toLowerCase())
+    if(pet_search.toLowerCase()==pets[i].Breed.toLowerCase())
     {
         html=html+"<ul>";
-        html=html+"<li>"+animals[i].Type_of_Animal+"</li>";
-        html=html+"<li>"+animals[i].Date_Picked_up+"</li>";
-        html=html+"<li>"+animals[i].Address+"</li>";
-        html=html+"<li>"+animals[i].City+"</li>";
-        html=html+"<li>"+animals[i].State+"</li>";
-        html=html+"<li>"+animals[i].Breed+"</li>";
-        html=html+"<li>"+animals[i].Sex+"</li>";
-        html=html+"<li>"+animals[i].Colour+"</li>";
+        html=html+"<li>"+pets[i].Type_of_Pet+"</li>";
+        html=html+"<li>"+pets[i].Date_Picked_up+"</li>";
+        html=html+"<li>"+pets[i].Address+"</li>";
+        html=html+"<li>"+pets[i].City+"</li>";
+        html=html+"<li>"+pets[i].State+"</li>";
+        html=html+"<li>"+pets[i].Breed+"</li>";
+        html=html+"<li>"+pets[i].Sex+"</li>";
+        html=html+"<li>"+pets[i].Colour+"</li>";
         html=html+"</ul>";
         con=true;
         break;
@@ -52,7 +52,7 @@ else {
   }
   if(con==false)
   {
-    document.getElementById("wrapper").innerHTML="Animal Not Found";
+    document.getElementById("wrapper").innerHTML="Pet Not Found";
   }
   else {
     document.getElementById("values").innerHTML = html;
