@@ -72,7 +72,7 @@ aside{
   float:right;
   /* border:1px solid; */
   margin:70px 70px 0 0;
-  max-width:350px;
+  max-width:320px;
   text-align: center;
   font-size:20px;
   background-color:white;
@@ -88,18 +88,18 @@ aside h3{
   height:40px;
   background-color:#f7f7f7;
 }
-#fact{
-  width:350px;
+#fact-img{
+  width:320px;
   margin:0;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
 #dog-walk{
-  width:130px;
+  width:100px;
   margin-bottom:-6px;
 }
 .scroll{
-  margin-top:120px;
+  margin-top:60px;
   margin-right:-5px;
 }
 .wrapper{

@@ -13,7 +13,7 @@ setInterval(sliding,1500);
 
 let email=document.getElementById('email');
 let pwd=document.getElementById('password');
-const login=document.getElementById('signup');
+const login=document.getElementById('login');
 const caution=document.querySelector('#caution');
 login.addEventListener('click',() =>{
   if(email.value=="nitish0399@hotmail.com" && pwd.value=="123456789")
