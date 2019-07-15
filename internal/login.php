@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']==true)
 {
-  header("location: search-pet.html");
+  header("location: search-pet.php");
   exit;
 }
 
@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
 
-                            header("location: search-pet.html");
+                            header("location: search-pet.php");
                         } else{
                             $password_err = "Wrong/invalid password";
                         }

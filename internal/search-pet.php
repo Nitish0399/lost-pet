@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
 <!doctype html>
 <html>
   <head>
@@ -10,11 +17,10 @@
       <h1>Pet Care</h1>
       <p>Search Menu</p>
       <nav>
-        <a href="search-pet.html">New Search</a>
-        <a href="edit-info.html">Edit Pet Details</a>
-        <a href="change-status.html">Change Pet Status</a>
-        <a href="add-pet.html">Add Pet</a>
-        <a href="logout.php">Log Out</a>
+        <a href="search-pet.php">New Search</a>
+        <a href="edit-info.php">Edit Pet Details</a>
+        <a href="change-status.php">Change Pet Status</a>
+        <a href="add-pet.php">Add Pet</a>
       </nav>
     </section>
     <main id="wrapper">
@@ -38,6 +44,11 @@
       </div>
       <button type="button" id="back">Back</button>
     </main>
+    <div class="user_profile">
+      <h3>Welcome, </h3>
+      <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+      <a href="logout.php">Log Out</a>
+    </div>
     <script src="../JavaScript/search-script.js"></script>
     <footer>
     </footer>
