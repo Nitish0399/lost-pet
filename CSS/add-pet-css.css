@@ -16,6 +16,7 @@ input{
   width: 180px;
   height: 20px;
   font-size: 17px;
+  margin-top:13px;
   margin-left:30px;
 }
 select{
@@ -26,6 +27,10 @@ label{
   margin:0 0 0 49px;
   font-size:18px;
 }
-#ip-img{
-  width:50%;
+input:last-child{
+  height:25px;
+}
+
+input[type='file']{
+  width:220px;
 }

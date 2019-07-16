@@ -60,9 +60,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
               <input type="text" id="text" name="Colour">
               <br>
             </ul>
-          <button type="submit" onclick="submitted()" id="submit">Submit</button>
+          <button type="submit" onclick="submitted()">Submit</button>
         </form>
-      <button type="button" id="back">Back</button>
+      <button type="button">Back</button>
     </main>
     <div class="user_profile">
       <h3>Welcome, </h3>

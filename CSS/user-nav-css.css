@@ -74,15 +74,14 @@ ul{
 }
 ul li{
   display:inline-block;
-  margin:8px 10px 0 10px;
+  margin:10px 10px 0 10px;
   padding-right:40px;
-  border-right:1px dashed gray;
   list-style: none;
   font-weight:bold;
   width:29%;
   font-size: 18px;
 }
-#submit{
+button[type="submit"]{
     position: absolute;
     left: 340px;
     bottom: 25px;
@@ -97,11 +96,11 @@ ul li{
     box-shadow: 0 6px 5px 0 rgba(0,0,0,0.1);
     border-radius: 3px;
 }
-#submit:hover{
+button[type="submit"]:hover{
   background-color: #ce1a1a;
 }
 
-#back{
+button[type="button"]{
   position: absolute;
     right: 50px;
     bottom: 25px;
@@ -116,7 +115,7 @@ ul li{
     box-shadow: 0 6px 5px 0 rgba(0,0,0,0.1);
     border-radius: 3px;
 }
-#back:hover{
+button[type="button"]:hover{
   background-color: #696c72;
 }
 .user_profile h3{

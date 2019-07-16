@@ -30,9 +30,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <form action="" method="post">
           <p class="status">Change Status : <span>ACTIVE</span></p>
           <p> Click on the status value to change </p>
-          <button type="submit" onclick="submitted()" id="submit">Save</button>
+          <button type="submit" onclick="submitted()">Save</button>
         </form>
-      <button type="button" id="back">Back</button>
+      <button type="button">Back</button>
     </main>
     <div class="user_profile">
       <h3>Welcome, </h3>

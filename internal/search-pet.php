@@ -42,7 +42,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <div id="values">
 
       </div>
-      <button type="button" id="back">Back</button>
+      <button type="button">Back</button>
     </main>
     <div class="user_profile">
       <h3>Welcome, </h3>
