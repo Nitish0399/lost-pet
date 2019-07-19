@@ -86,9 +86,12 @@ input{
 .btn:hover{
     transition:.5s;
 }
- .submit:hover{
-   background-color: #d23232
- }
+.submit:hover{
+ background-color: #d23232
+}
+button:focus{
+ outline:none;
+}
 footer{
   position:relative;
   border-top: 1px solid gray;

@@ -19,27 +19,43 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   $breed=trim($_POST["breed"]);
   $sex=trim($_POST["sex"]);
   $color=trim($_POST["color"]);
-  $pet_image=trim($_POST["pet_image"]);
   if(!empty($pet_type) && !empty($date_of_pickup) && !empty($address) && !empty($city) && !empty($state) &&
-      !empty($breed) && !empty($sex) && !empty($color) && !empty($pet_image))
+      !empty($breed) && !empty($sex) && !empty($color))
   {
-
-      $sql = "INSERT INTO pets ( pet_type, date_of_pickup, address, city, state, breed, sex, color, pet_img) VALUES (?,?,?,?,?,?,?,?,?)";
+      // file upload
+      $targetDir = "../uploads/";
+      $fileName = basename($_FILES["pet_image"]["name"]);
+      $targetFilePath = $targetDir . $fileName;
+      $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+      $allowTypes = array('jpg','png','jpeg','gif','pdf');
+      if(in_array($fileType, $allowTypes))
+      {
+          if(!move_uploaded_file($_FILES["pet_image"]["tmp_name"], $targetFilePath))
+          {
+              echo "Sorry, there was an error uploading your file.";
+          }
+      }
+      else
+      {
+          echo 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+      }
+      $sql = "INSERT INTO pets ( pet_type, date_of_pickup, address, city, state, breed, sex, color, pet_img, status) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
       if($stmt = mysqli_prepare($conn, $sql))
       {
-          mysqli_stmt_bind_param($stmt, "sssssssss", $param_pet_type, $param_date_of_pickup, $param_address
+          mysqli_stmt_bind_param($stmt, "ssssssssss", $param_pet_type, $param_date_of_pickup, $param_address
                                                 , $param_city, $param_state, $param_breed, $param_sex
-                                              , $param_color, $param_pet_image);
-          $param_pet_type=$pet_type;
-          $param_date_of_pickup=$date_of_pickup;
-          $param_address=$address;
-          $param_city=$city;
-          $param_state=$state;
-          $param_breed=$breed;
-          $param_sex=$sex;
-          $param_color=$color;
-          $param_pet_image=$pet_image;
+                                              , $param_color, $param_pet_image, $param_status);
+          $param_pet_type=ucfirst($pet_type);
+          $param_date_of_pickup=ucfirst($date_of_pickup);
+          $param_address=ucfirst($address);
+          $param_city=ucfirst($city);
+          $param_state=ucfirst($state);
+          $param_breed=ucfirst($breed);
+          $param_sex=ucfirst($sex);
+          $param_color=ucfirst($color);
+          $param_pet_image=$fileName;
+          $param_status="Active";
 
           if(mysqli_stmt_execute($stmt))
           {
@@ -58,7 +74,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
   }
   else
   {
-    echo "Error submitting data3";
+    echo "Fill In all the details";
   }
 }
 mysqli_close($conn);
@@ -66,67 +82,69 @@ mysqli_close($conn);
 <!doctype html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Logged In</title>
     <link rel="stylesheet" href="../CSS/add-pet-css.css">
   </head>
   <body>
-    <section class="vertical-nav">
-      <img id="logo" src="../Pet images/logo.png" alt="LOGO">
-      <h1>Pet Care</h1>
-      <p>Search Menu</p>
-      <nav>
-        <a href="search-pet.php">New Search</a>
-        <a href="edit-info.php">Edit Pet Details</a>
-        <a href="change-status.php">Change Pet Status</a>
-        <a href="add-pet.php">Add Pet</a>
-      </nav>
-    </section>
-    <main id="wrapper">
-      <h2>Add Pet</h2>
+    <div id="wrapper">
+      <section class="vertical-nav">
+        <img id="logo" src="../Pet images/logo.png" alt="LOGO">
+        <h1>Pet Care</h1>
+        <p>Search Menu</p>
+        <nav>
+          <a href="search-pet.php">New Search</a>
+          <a href="edit-info.php">Edit Pet Details</a>
+          <a href="change-status.php">Change Pet Status</a>
+          <a href="add-pet.php">Add Pet</a>
+        </nav>
+      </section>
+      <main>
+        <h2>Add Pet</h2>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-          <ul>
-            <li>Type of Pet:</li>
-            <select name="pet_type" value="<?php echo $pet_type; ?>">
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-            </select>
-            <br>
-            <li>Date Picked Up:</li>
-            <input type="date" id="d-p-u" name="date_of_pickup" value="<?php echo $date_of_pickup; ?>">
-            <br>
-            <li>Address:</li>
-            <input type="text" id="Address" name="address" value="<?php echo $address; ?>">
-            <br>
-            <li>City:</li>
-            <input type="text" id="City" name="city" value="<?php echo $city; ?>">
-            <br>
-            <li>State:</li>
-            <input type="text" id="State" name="state" value="<?php echo $state; ?>">
-            <br>
-            <li>Breed:</li>
-            <input type="text" id="Breed" name="breed" value="<?php echo $breed; ?>">
-            <br>
-            <li>Sex:</li>
-            <select name="sex" value="<?php echo $sex; ?>">
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-            </select>
-            <br>
-            <li>Colour:</li>
-            <input type="text" id="text" name="color" value="<?php echo $color; ?>">
-            <br>
-            <li>Upload pet image:</li>
-            <input type="file" name="pet_image" value="">
-          </ul>
-          <button type="submit" onclick="submitted()">Submit</button>
-        </form>
-      <button type="button">Back</button>
-    </main>
-    <div class="user_profile">
-      <h3>Welcome, </h3>
-      <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
-      <a href="logout.php">Log Out</a>
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
+            <ul>
+              <li>Type of Pet:</li>
+              <input type="text" name="pet_type" value="<?php echo $pet_type; ?>">
+              <br>
+              <li>Date Picked Up:</li>
+              <input type="date" name="date_of_pickup" value="<?php echo $date_of_pickup; ?>">
+              <br>
+              <li>Address:</li>
+              <input type="text" name="address" value="<?php echo $address; ?>">
+              <br>
+              <li>City:</li>
+              <input type="text" name="city" value="<?php echo $city; ?>">
+              <br>
+              <li>State:</li>
+              <input type="text" name="state" value="<?php echo $state; ?>">
+              <br>
+              <li>Breed:</li>
+              <input type="text" name="breed" value="<?php echo $breed; ?>">
+              <br>
+              <li>Sex:</li>
+              <select name="sex">
+                <option value="<?php echo $sex; ?>" disabled hidden selected><?php echo $sex; ?></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <br>
+              <li>Colour:</li>
+              <input type="text" id="text" name="color" value="<?php echo $color; ?>">
+              <br>
+              <li>Upload pet image:</li>
+              <input type="file" name="pet_image" value="<?php echo $pet_image; ?>">
+            </ul>
+            <button type="submit">Submit</button>
+          </form>
+        <button type="button">Back</button>
+      </main>
+      <div class="user_profile">
+        <h3>Welcome, </h3>
+        <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+        <a href="logout.php">Log Out</a>
+      </div>
     </div>
     <footer>
     </footer>

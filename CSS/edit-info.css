@@ -1,8 +1,9 @@
 @import "user-nav-css.css";
 
 input{
+  box-sizing: border-box;
   width: 180px;
-  height: 20px;
+  height: 25px;
   font-size: 17px;
 }
 select{
