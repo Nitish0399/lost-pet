@@ -35,12 +35,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             }
             else
             {
-                echo "Breed does not exist";
+                $result= "Breed does not exist";
             }
         }
         else
         {
-            echo "Oops! Something went wrong. Please try again later";
+            $result= "Oops! Something went wrong. Please try again later";
         }
         mysqli_stmt_close($stmt);
     }

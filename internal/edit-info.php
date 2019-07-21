@@ -9,12 +9,12 @@ require_once "../config.php";
 $pet_type=$date_of_pickup=$address=$city=$state=$breed=$sex=$color=$pet_image="";
 $pet_breed="";
 $result="";
-if($_SERVER["REQUEST_METHOD"] == "POST")
+if(isset($_GET["pet_breed"]))
 {
-    $pet_breed=trim($_POST["pet_breed"]);
+    $pet_breed=trim($_GET["pet_breed"]);
     if(!empty($pet_breed))
     {
-        $sql = "SELECT pet_type, date_of_pickup, address, city, state, breed, sex, color, pet_img FROM pets WHERE breed = ?";
+        $sql = "SELECT id, pet_type, date_of_pickup, address, city, state, breed, sex, color, pet_img FROM pets WHERE breed = ?";
 
         if($stmt = mysqli_prepare($conn, $sql))
         {
@@ -27,8 +27,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
                 if(mysqli_stmt_num_rows($stmt) == 1)
                 {
-                    mysqli_stmt_bind_result($stmt,$pet_type,$date_of_pickup,$address,$city,$state,$breed,$sex,$color,$pet_image);
+                    mysqli_stmt_bind_result($stmt,$id, $pet_type,$date_of_pickup,$address,$city,$state,$breed,$sex,$color,$pet_img);
                     mysqli_stmt_fetch($stmt);
+                    $_SESSION["pet_id"]=$id;
+                    $pet_image=$_SESSION["pet_img"]=$pet_img;
                 }
                 else
                 {
@@ -37,19 +39,92 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             }
             else
             {
-                echo "Breed does not exist";
+                $result= "Oops! Something went wrong.";
             }
         }
         else
         {
-            echo "Oops! Something went wrong. Please try again later";
+            $result= "Oops! Something went wrong.";
         }
         mysqli_stmt_close($stmt);
     }
-    else
-    {
-        echo "error";
-    }
+}
+
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+  $pet_type=trim($_POST["pet_type"]);
+  $date_of_pickup=trim($_POST["date_of_pickup"]);
+  $address=trim($_POST["address"]);
+  $city=trim($_POST["city"]);
+  $state=trim($_POST["state"]);
+  $breed=trim($_POST["breed"]);
+  $sex=trim($_POST["sex"]);
+  $color=trim($_POST["color"]);
+
+  if(basename($_FILES["pet_image"]["name"])=="")
+      $pet_image=$_SESSION["pet_img"];
+  else
+      $pet_image=$_SESSION["pet_img"]=$_FILES["pet_image"]["name"];
+
+  if(!empty($pet_type) && !empty($date_of_pickup) && !empty($address) && !empty($city) && !empty($state) &&
+      !empty($breed) && !empty($sex) && !empty($color))
+  {
+      // file upload
+      if(isset($pet_image))
+      {
+        $targetDir = "../uploads/";
+        $targetFilePath = $targetDir . $pet_image;
+        $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+        $allowTypes = array('jpg','png','jpeg','gif','pdf');
+        if(in_array($fileType, $allowTypes))
+        {
+            if(!move_uploaded_file($_FILES["pet_image"]["tmp_name"], $targetFilePath))
+            {
+                $result= "Sorry, there was an error uploading your file.";
+            }
+        }
+        else
+        {
+            $result= 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+        }
+      }
+      $sql = "UPDATE pets SET pet_type=?, date_of_pickup=?, address=?, city=?, state=?, breed=?, sex=?, color=?, pet_img=? WHERE id=?";
+
+      if($stmt = mysqli_prepare($conn, $sql))
+      {
+          mysqli_stmt_bind_param($stmt, "ssssssssss", $param_pet_type, $param_date_of_pickup, $param_address
+                                                , $param_city, $param_state, $param_breed, $param_sex
+                                              , $param_color,$param_pet_image, $param_id);
+          $param_pet_type=ucfirst($pet_type);
+          $param_date_of_pickup=ucfirst($date_of_pickup);
+          $param_address=ucfirst($address);
+          $param_city=ucfirst($city);
+          $param_state=ucfirst($state);
+          $param_breed=ucfirst($breed);
+          $param_sex=ucfirst($sex);
+          $param_color=ucfirst($color);
+          $param_pet_image=$pet_image;
+          $param_id=$_SESSION["pet_id"];
+          if(mysqli_stmt_execute($stmt))
+          {
+              $result= "<br>Successful";
+          }
+          else
+          {
+            $result= "Error submitting data1";
+          }
+          mysqli_stmt_close($stmt);
+      }
+      else
+      {
+        $result= "Error submitting data2";
+      }
+  }
+  else
+  {
+    echo "Fill In all the details";
+  }
 }
 mysqli_close($conn);
 ?>
@@ -78,7 +153,7 @@ mysqli_close($conn);
       </section>
       <main>
         <div id="searchbox">
-          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
             <input type="text" placeholder="Search" name="pet_breed" autocomplete="off" value="<?php echo $pet_breed; ?>">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
@@ -89,7 +164,7 @@ mysqli_close($conn);
         <div id="pet_info" style="display:none;">
           <img src="../uploads/<?php echo $pet_image; ?>">
           <h2>Details of breed - <span><?php echo $breed; ?></span></h2>
-          <form action="" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
               <ul>
                 <li>Type of Pet</li>
                 <input type="text" name="pet_type" value="<?php echo $pet_type; ?>">
@@ -98,27 +173,29 @@ mysqli_close($conn);
                 <input type="date" name="date_of_pickup" value="<?php echo $date_of_pickup; ?>">
                 <br>
                 <li>Address</li>
-                <input type="text" name="Address" value="<?php echo $address; ?>">
+                <input type="text" name="address" value="<?php echo $address; ?>">
                 <br>
                 <li>City</li>
-                <input type="text" name="City" value="<?php echo $city; ?>">
+                <input type="text" name="city" value="<?php echo $city; ?>">
                 <br>
                 <li>State</li>
-                <input type="text" name="State" value="<?php echo $state; ?>">
+                <input type="text" name="state" value="<?php echo $state; ?>">
                 <br>
                 <li>Breed</li>
-                <input type="text" name="Breed" value="<?php echo $breed; ?>">
+                <input type="text" name="breed" value="<?php echo $breed; ?>">
                 <br>
                 <li>Sex</li>
                 <select name="sex">
-                  <option value="<?php echo $sex; ?>" disabled hidden selected><?php echo $sex; ?></option>
+                  <option value="<?php echo $sex; ?>" hidden selected><?php echo $sex; ?></option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </select>
                 <br>
                 <li>Colour</li>
-                <input type="text" name="Colour" value="<?php echo $color; ?>">
+                <input type="text" name="color" value="<?php echo $color; ?>">
                 <br>
+                <li>Pet image</li>
+                <input type="file" name="pet_image" value="<?php echo $pet_image; ?>">
               </ul>
             <button type="submit">Submit</button>
           </form>

@@ -125,7 +125,7 @@ mysqli_close($conn);
               <br>
               <li>Sex:</li>
               <select name="sex">
-                <option value="<?php echo $sex; ?>" disabled hidden selected><?php echo $sex; ?></option>
+                <option value="<?php echo $sex; ?>"hidden selected><?php echo $sex; ?></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>

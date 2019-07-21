@@ -6,6 +6,9 @@ input{
   height: 25px;
   font-size: 17px;
 }
+input:last-child{
+  width: 220px;
+}
 select{
   font-size:17px;
 }

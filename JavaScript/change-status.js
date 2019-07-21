@@ -4,15 +4,16 @@ if($breed!="")
   $("#pet_info").show();
 }
 
-const status=document.querySelector("span");
-status.addEventListener("click", () =>{
-  if(status.textContent=="ACTIVE")
+let $status=$(".status input");
+$status.click(function(){
+  if($status.attr("value")=="Active")
   {
-    status.textContent="UNACTIVE";
-    status.style.color="red";
+    $status.attr("value","Unactive");
+    $status.css("color","red");
   }
-  else {
-    status.textContent="ACTIVE";
-    status.style.color="green";
+  else
+  {
+    $status.attr("value","Active");
+    $status.css("color","green");
   }
 });
