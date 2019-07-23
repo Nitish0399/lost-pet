@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 require_once "../config.php";
 
-$status=$breed=$pet_image="";
+$status=$breed=$pet_image=$color="";
 $pet_breed="";
 $result="";
 if(isset($_GET["pet_breed"]))
@@ -33,10 +33,14 @@ if(isset($_GET["pet_breed"]))
                     $_SESSION["pet_breed"]=$breed;
                     $_SESSION["pet_status"]=$status;
                     $_SESSION["pet_img"]=$pet_image;
+                    if($status=="ACTIVE")
+                      $color="#00b300";
+                    else
+                      $color="red";
                 }
                 else
                 {
-                  $result="Pet breed not found.";
+                  $result="Pet breed not found";
                 }
             }
             else
@@ -46,7 +50,7 @@ if(isset($_GET["pet_breed"]))
         }
         else
         {
-            $result= "Oops! Something went wrong. Please try again later";
+            $result= "Oops! Something went wrong";
         }
         mysqli_stmt_close($stmt);
     }
@@ -56,6 +60,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $breed=$_SESSION["pet_breed"];
   $pet_image=$_SESSION["pet_img"];
+  $status=$_POST["status"];
+  if($status=="ACTIVE")
+    $color="#00b300";
+  else
+    $color="red";
   if(!empty($breed))
   {
     $sql = "UPDATE pets SET status=? WHERE breed=?";
@@ -67,17 +76,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         $param_breed=$breed;
         if(mysqli_stmt_execute($stmt))
         {
-            $result= "Successful";
+            $result= "SUCCESS";
         }
         else
         {
-          $result= "Error submitting data1";
+          $result= "Error submitting data";
         }
         mysqli_stmt_close($stmt);
     }
     else
     {
-      $result= "Error submitting data2";
+      $result= "Error submitting data";
     }
   }
 }
@@ -110,17 +119,18 @@ mysqli_close($conn);
         <div id="searchbox">
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
             <input type="text" placeholder="Search" name="pet_breed" autocomplete="off" value="<?php echo $pet_breed; ?>">
-            <button type="submit" onclick="show_pet_info()"><i class="fa fa-search"></i></button>
+            <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-        <div id="error">
+        <div id="result" style="background: <?php if($result=='SUCCESS') echo '#64d264'; ?>; display: <?php if($result!='') echo 'block';?>; ">
           <?php echo $result;?>
         </div>
         <div id="pet_info" style="display: none;">
           <img src="../uploads/<?php echo $pet_image; ?>">
           <h2>Details of breed - <span><?php echo $breed; ?></span></h2>
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-            <p class="status">Change Status : <input type="button" value="<?php echo $status; ?>"></p>
+            <p class="status">Change Status : <input type="button" value="<?php echo strtoupper($status); ?>" style="  color: <?php echo $color;?>;"></p>
+            <input type="hidden" name="status" value="<?php echo strtoupper($status); ?>">
             <p> Click on the status value to change </p>
             <button type="submit">Save</button>
           </form>
@@ -129,7 +139,7 @@ mysqli_close($conn);
       </main>
       <div class="user_profile">
         <h3>Welcome, </h3>
-        <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+        <span id="username"><?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?></span>
         <a href="logout.php">Log Out</a>
       </div>
     </div>

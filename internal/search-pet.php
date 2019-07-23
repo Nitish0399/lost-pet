@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 }
                 else
                 {
-                  $result="Pet breed not found.";
+                  $result="Pet breed not found";
                 }
             }
             else
@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
         else
         {
-            $result= "Oops! Something went wrong. Please try again later";
+            $result= "Oops! Something went wrong";
         }
         mysqli_stmt_close($stmt);
     }
@@ -77,7 +77,7 @@ mysqli_close($conn);
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-        <div id="error">
+        <div id="result" style="display: <?php if($result!='') echo 'block'; ?>; ">
           <?php echo $result;?>
         </div>
         <div id="pet_info" style="display:none;">
@@ -112,7 +112,7 @@ mysqli_close($conn);
       </main>
       <div class="user_profile">
         <h3>Welcome, </h3>
-        <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+        <span id="username"><?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?></span>
         <a href="logout.php">Log Out</a>
       </div>
     </div>

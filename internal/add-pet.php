@@ -8,7 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "../config.php";
 
 $pet_type=$date_of_pickup=$address=$city=$state=$breed=$sex=$color=$pet_image="";
-
+$result="";
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $pet_type=trim($_POST["pet_type"]);
@@ -32,12 +32,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
       {
           if(!move_uploaded_file($_FILES["pet_image"]["tmp_name"], $targetFilePath))
           {
-              echo "Sorry, there was an error uploading your file.";
+              echo "Error uploading image";
           }
       }
       else
       {
-          echo 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+          $result= 'Only JPG, JPEG, PNG, GIF, & PDF files are allowed';
       }
       $sql = "INSERT INTO pets ( pet_type, date_of_pickup, address, city, state, breed, sex, color, pet_img, status) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
@@ -55,26 +55,26 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
           $param_sex=ucfirst($sex);
           $param_color=ucfirst($color);
           $param_pet_image=$fileName;
-          $param_status="Active";
+          $param_status="ACTIVE";
 
           if(mysqli_stmt_execute($stmt))
           {
-              echo "<br>Successful";
+              $result= "SUCCESS";
           }
           else
           {
-            echo "Error submitting data1";
+            $result= "Error submitting data";
           }
           mysqli_stmt_close($stmt);
       }
       else
       {
-        echo "Error submitting data2";
+        $result= "Error submitting data";
       }
   }
   else
   {
-    echo "Fill In all the details";
+    $result= "Fill In all the details";
   }
 }
 mysqli_close($conn);
@@ -101,6 +101,9 @@ mysqli_close($conn);
         </nav>
       </section>
       <main>
+        <div id="result" style="background: <?php if($result=='SUCCESS') echo '#64d264'; ?>; display: <?php if($result!='') echo 'block'; ?>; ">
+          <?php echo $result;?>
+        </div>
         <h2>Add Pet</h2>
 
           <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
@@ -142,7 +145,7 @@ mysqli_close($conn);
       </main>
       <div class="user_profile">
         <h3>Welcome, </h3>
-        <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+        <span id="username"><?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?></span>
         <a href="logout.php">Log Out</a>
       </div>
     </div>

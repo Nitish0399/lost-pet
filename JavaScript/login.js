@@ -8,4 +8,4 @@ function sliding()
     i=1;
     document.getElementById("slider").innerHTML=html;
 }
-setInterval(sliding,1500);
+setInterval(sliding,2000);

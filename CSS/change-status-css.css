@@ -1,16 +1,20 @@
 @import "user-nav-css.css";
 
-main{
+/* main{
   height:520px;
-}
+} */
 .status{
   font-size: 25px;
   text-align: center;
   margin-top:60px;
 }
-.status span{
+.status input{
+  font-size: 25px;
   font-weight: bold;
-  color:green;
+  background: white;
+  border: none;
+  width: 135px;
+  height: 35px;
 }
 form p{
   text-align: center;

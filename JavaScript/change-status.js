@@ -6,14 +6,16 @@ if($breed!="")
 
 let $status=$(".status input");
 $status.click(function(){
-  if($status.attr("value")=="Active")
+  if($status.attr("value")=="ACTIVE")
   {
-    $status.attr("value","Unactive");
+    $status.attr("value","UNACTIVE");
+    $("input[type='hidden']").attr("value","UNACTIVE");
     $status.css("color","red");
   }
   else
   {
-    $status.attr("value","Active");
-    $status.css("color","green");
+    $status.attr("value","ACTIVE");
+    $("input[type='hidden']").attr("value","ACTIVE");
+    $status.css("color","#00b300");
   }
 });

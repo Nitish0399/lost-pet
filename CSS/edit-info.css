@@ -1,12 +1,15 @@
 @import "user-nav-css.css";
 
-input{
+main{
+  height:700px;
+}
+#pet_info input{
   box-sizing: border-box;
   width: 180px;
   height: 25px;
   font-size: 17px;
 }
-input:last-child{
+#pet_info input:last-child{
   width: 220px;
 }
 select{

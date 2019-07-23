@@ -23,10 +23,10 @@ h1{
   border-radius: 10px;
 }
 #slider img{
-  width:900px;
-  height:600px;
+  width:750px;
+  height:500px;
   margin-left:100px;
-  margin-top:75px;
+  margin-top:70px;
   border:1px solid ;
   border-radius:6px;
   transition:1s;
@@ -123,7 +123,6 @@ input{
 .wrap{
   box-sizing:border-box;
   background: linear-gradient(to left,#ffffb5,#cdffc1 70%);
-  /* border:1px solid black; */
   min-height:calc(100vh - 130px - 60px);
 }
 .wrapper{
@@ -131,7 +130,6 @@ input{
 }
 footer{
   position:relative;
-  /* border-top: 1px solid gray; */
   background-color:lightyellow;
   margin-bottom:0;
   width:100%;

@@ -34,17 +34,17 @@ if(isset($_GET["pet_breed"]))
                 }
                 else
                 {
-                  $result="Pet breed not found.";
+                  $result="Pet breed not found";
                 }
             }
             else
             {
-                $result= "Oops! Something went wrong.";
+                $result= "Oops! Something went wrong";
             }
         }
         else
         {
-            $result= "Oops! Something went wrong.";
+            $result= "Oops! Something went wrong";
         }
         mysqli_stmt_close($stmt);
     }
@@ -81,12 +81,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         {
             if(!move_uploaded_file($_FILES["pet_image"]["tmp_name"], $targetFilePath))
             {
-                $result= "Sorry, there was an error uploading your file.";
+                $result= "Error uploading image";
             }
         }
         else
         {
-            $result= 'Sorry, only JPG, JPEG, PNG, GIF, & PDF files are allowed to upload.';
+            $result= 'Only JPG, JPEG, PNG, GIF, & PDF files allowed';
         }
       }
       $sql = "UPDATE pets SET pet_type=?, date_of_pickup=?, address=?, city=?, state=?, breed=?, sex=?, color=?, pet_img=? WHERE id=?";
@@ -108,17 +108,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
           $param_id=$_SESSION["pet_id"];
           if(mysqli_stmt_execute($stmt))
           {
-              $result= "<br>Successful";
+              $result= "SUCCESS";
           }
           else
           {
-            $result= "Error submitting data1";
+            $result= "Error submitting data";
           }
           mysqli_stmt_close($stmt);
       }
       else
       {
-        $result= "Error submitting data2";
+        $result= "Error submitting data";
       }
   }
   else
@@ -158,7 +158,7 @@ mysqli_close($conn);
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
-        <div id="error">
+        <div id="result" style="background: <?php if($result=='SUCCESS') echo '#64d264'; ?>; display: <?php if($result!='') echo 'block'; ?>; ">
           <?php echo $result;?>
         </div>
         <div id="pet_info" style="display:none;">
@@ -204,7 +204,7 @@ mysqli_close($conn);
       </main>
       <div class="user_profile">
         <h3>Welcome, </h3>
-        <?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?>
+        <span id="username"><?php echo htmlspecialchars(strtoupper($_SESSION["username"]));?></span>
         <a href="logout.php">Log Out</a>
       </div>
     </div>
