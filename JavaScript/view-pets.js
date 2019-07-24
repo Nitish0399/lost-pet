@@ -11,21 +11,20 @@ $(".pets-list img").mouseleave(function(event){
   $($id).css("opacity","1");
 });
 
-$(".pets-list #info").mouseenter(function(event){
-  $id="#" + String(event.target.id);
-  $img="#" + String(event.target.parentElement.firstChild);
-  console.log(String(event.target.parentElement.firstChild));
-  $($id).css("display","block");
-  $($img).css("transform","scale(1.1)");
-  $($img).css("opacity","0.15");
-});
-$(".pets-list #info").mouseleave(function(event){
-  $id="#" + String(event.target.id);
-  $img="#" + String(event.target.parentElement.firstChild);
-  $($id).css("display","none");
-  $($img).css("transform","none");
-  $($img).css("opacity","1");
-});
+// $(".pets-list #info").mouseenter(function(event){
+//   $id="#" + String(event.target.id);
+//   $img="#" + String(event.target.parentElement.firstChild);
+//   $($id).css("display","block");
+//   $($img).css("transform","scale(1.1)");
+//   $($img).css("opacity","0.15");
+// });
+// $(".pets-list #info").mouseleave(function(event){
+//   $id="#" + String(event.target.id);
+//   $img="#" + String(event.target.parentElement.firstChild);
+//   $($id).css("display","none");
+//   $($img).css("transform","none");
+//   $($img).css("opacity","1");
+// });
 
 //
 // $(".pets-list span").mouseenter(function(){

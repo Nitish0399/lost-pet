@@ -103,7 +103,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
    </div>
     <footer>
       <p>&copy; Created by Nitish</p>
-      <button type="button" onclick="window.location.href='../home.html'" title="External">&Delta;</button>
+      <button type="button" onclick="window.location.href='../index.html'" title="External">&Delta;</button>
     </footer>
   </body>
 </html>

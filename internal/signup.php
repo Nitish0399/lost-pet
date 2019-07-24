@@ -4,11 +4,31 @@ require_once "../config.php";
 
 $username=$email=$password=$c_password="";
 $username_err=$email_err=$password_err=$c_password_err="";
+
+$result="";
+
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
   $username=furnish_input($_POST["username"]);
   if(empty($username) || !preg_match("/^[a-zA-Z ]*$/",$username))
-    $username_err="Enter Valid Name";
+    $username_err="Enter Valid Name. (Only characters)";
+  else
+  {
+    $sql = "SELECT user_name FROM users WHERE user_name=?";
+    if($stmt = mysqli_prepare($conn, $sql))
+    {
+        mysqli_stmt_bind_param($stmt, "s", $param_user_name);
+        $param_user_name = $username;
+        if(mysqli_stmt_execute($stmt))
+        {
+            mysqli_stmt_store_result($stmt);
+            if(mysqli_stmt_num_rows($stmt) == 1)
+            {
+                $username_err="Username already exists";
+            }
+          }
+      }
+  }
   $email=furnish_input($_POST["email"]);
   if(empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL))
     $email_err="Enter Valid Email ID";
@@ -36,11 +56,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 
       if(mysqli_stmt_execute($stmt))
       {
-          echo "<br>Successful";
+          $result = "Successful";
       }
       else
       {
-        echo "Error submitting data";
+          $result = "Error submitting data";
       }
 
       mysqli_stmt_close($stmt);
@@ -69,6 +89,9 @@ mysqli_close($conn);
         <img id="logo" src="../Pet images/logo.png" alt="LOGO">
         <h1>Pet Care</h1>
       </header>
+      <div class="result" style="display: <?php if($result!='') echo 'block'; ?>;">
+        <span><?php echo $result; ?></span>
+      </div>
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <h2>SIGN UP</h2>
         <div class="form_elements">
@@ -90,7 +113,7 @@ mysqli_close($conn);
     </div>
     <footer>
       <p>&copy; Created by Nitish</p>
-      <button type="button" onclick="window.location.href='../home.html'" title="External">&Delta;</button>
+      <button type="button" onclick="window.location.href='../index.html'" title="External">&Delta;</button>
     </footer>
   </body>
 </html>

@@ -39,6 +39,7 @@ main p{
   left: 50px;
   margin: 0;
   font-size: 24px;
+  pointer-events: none;
 }
 .pets-list #info span{
   font-weight: bold;

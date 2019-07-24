@@ -50,13 +50,16 @@ body{
   font-family:"Trebuchet MS", Helvetica, sans-serif;
   margin: 0;
 }
+.wrapper{
+  min-height:calc(100vh - 60px);
+}
 main{
+  position:relative;
   overflow: hidden;
   box-sizing:border-box;
   padding-top:150px;
   width:80%;
   margin:0 auto;
-  /* border:0.5px solid; */
   background-color:white;
   min-height:calc(100vh - 60px);
 }
@@ -69,7 +72,6 @@ main{
 }
 aside{
   float:right;
-  /* border:1px solid; */
   margin:70px 70px 0 0;
   max-width:320px;
   text-align: center;
@@ -95,14 +97,11 @@ aside h3{
 }
 #dog-walk{
   width:100px;
-  margin-bottom:-6px;
 }
 .scroll{
-  margin-top:60px;
-  margin-right:-5px;
-}
-.wrapper{
-  min-height:calc(100vh - 60px);
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
 footer{
   position:relative;
