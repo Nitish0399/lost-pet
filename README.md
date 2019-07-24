@@ -1,6 +1,5 @@
 # Pet Care
 
-An interactive web app that renders information regarding pet care, facts to be known about pets, and necessary licences and vaccines to be given to a pet. It is majorly designed to help pet owners to find their lost pet. They can search for their lost pet on this platform if the information exists in the database and then retrieve it by providing relevant details.
-A stray pet which is found to any individual in an area can pass on the
-details regarding it to the website's administrator so that this information is updated onto the website. This way the pet owners can find their lost pet without losing time and doing much labourous work and retrieve it easily.
+An interactive web app that renders information regarding pet care, facts to be known about pets, and necessary licences and vaccines to be given to a pet. It is majorly designed to help pet owners to find their lost pet. The lost pet information is displayed on the website which is provided by the person who found it, so that this way the pet owners can find their lost pet without doing much labourous work and retrieve it easily.
 Built using HTML, CSS, JavaScript, jQuery, PHP, MySQL.
+
