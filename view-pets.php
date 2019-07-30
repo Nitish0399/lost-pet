@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/info-css.css">
     <link rel="stylesheet" href="CSS/view-pets-css.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   </head>
   <body>
       <header>
@@ -17,13 +18,23 @@
           <a href="ftk.html">Facts To Know</a>
           <a href="faq.html">FAQ</a>
           <a href="license.html">Licensing</a>
-          <a href="view-pets.php" style="border:none;">View Pets</a>
+          <a href="view-pets.php">View Pets</a>
         </nav>
+        <div id="dropdown-nav">
+          <button type="button"><i class='fas fa-angle-double-down'></i></button>
+          <div id="dropdown">
+            <a href="index.html">Home</a>
+            <a href="ftk.html">Facts To Know</a>
+            <a href="faq.html">FAQ</a>
+            <a href="license.html">Licensing</a>
+            <a href="view-pets.php">View Pets</a>
+          </div>
+        </div>
       </header>
       <main>
         <p>The information for this page is updated daily. If you do not see the animal you are looking for, check back tomorrow.
            If you recogize your pet on this website, please read <a href="">What is the cost to reedem my animal</a> on the Frequently Asked Questions page
-            and call Animal Care at (xxxxxxxxxx) immediately.</p>
+            and call Pet Care at (xxxxxxxxxx) immediately.</p>
           <section class="pets-list">
             <?php
             require_once "config.php";
@@ -44,10 +55,6 @@
             }
             mysqli_close($conn);
             ?>
-            <!-- <div id="d2"><img src="Pet images\1280px-IMG_6547.CR2.jpg" alt="pet image"></div>
-            <div id="d3"><img src="Pet images\1280px-Long_Coat_Chihuahua_-_Ch_Dazzles_Touch_Of_Midas_1_(16602373985).jpg" alt="pet image"></div>
-            <div id="d4"><img src="Pet images\1920px-Finnish_Spitz_-_GCH_Dv9k9's_Red_Hot_Star_aka_Rocket_3_(16415385600).jpg" alt="pet image"></div>
-            <div id="d6"><img src="Pet images\Bullterrier_Bull_Terrier_Mirta_4.jpg" alt="pet image"></div> -->
           </section>
       </main>
       <footer>

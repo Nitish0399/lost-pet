@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Lost Pet Application</title>
     <link rel="stylesheet" href="CSS/info-css.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
   </head>
   <body>
       <header>
@@ -15,8 +16,18 @@
           <a href="ftk.html">Facts To Know</a>
           <a href="faq.html">FAQ</a>
           <a href="license.html">Licensing</a>
-          <a href="view-pets.php" style="border:none;">View Pets</a>
+          <a href="view-pets.php">View Pets</a>
         </nav>
+        <div id="dropdown-nav">
+          <button type="button"><i class='fas fa-angle-double-down'></i></button>
+          <div id="dropdown">
+            <a href="index.html">Home</a>
+            <a href="ftk.html">Facts To Know</a>
+            <a href="faq.html">FAQ</a>
+            <a href="license.html">Licensing</a>
+            <a href="view-pets.php">View Pets</a>
+          </div>
+        </div>
       </header>
       <main>
         <h2>Licensing</h2>
@@ -53,5 +64,22 @@
         <p>&copy;  Created by Nitish</p>
         <button type="button" onclick="window.location.href='internal/login.php'" title="Internal">&Delta;</button>
       </footer>
+      <script>
+        const dropdown_btn=document.querySelector("#dropdown-nav button");
+        dropdown_btn.addEventListener("click",()=>{
+          const dropdown=document.querySelector("#dropdown");
+          if(dropdown.style.display=="none")
+            dropdown.style.display="block";
+          else
+            dropdown.style.display="none";
+        });
+
+        window.onclick=function(event){
+          if(!event.target.matches("#dropdown-nav button") && !event.target.matches("#dropdown-nav button i"))
+          {
+            document.querySelector("#dropdown").style.display="none";
+          }
+        }
+      </script>
   </body>
 </html>

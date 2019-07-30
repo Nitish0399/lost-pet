@@ -109,7 +109,6 @@ mysqli_close($conn);
         <button type="submit" class="btn submit">Sign Up</button>
         <a href="login.php" id="back">Back</a>
       </form>
-
     </div>
     <footer>
       <p>&copy; Created by Nitish</p>

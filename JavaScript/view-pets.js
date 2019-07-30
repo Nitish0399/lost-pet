@@ -11,32 +11,21 @@ $(".pets-list img").mouseleave(function(event){
   $($id).css("opacity","1");
 });
 
-// $(".pets-list #info").mouseenter(function(event){
-//   $id="#" + String(event.target.id);
-//   $img="#" + String(event.target.parentElement.firstChild);
-//   $($id).css("display","block");
-//   $($img).css("transform","scale(1.1)");
-//   $($img).css("opacity","0.15");
-// });
-// $(".pets-list #info").mouseleave(function(event){
-//   $id="#" + String(event.target.id);
-//   $img="#" + String(event.target.parentElement.firstChild);
-//   $($id).css("display","none");
-//   $($img).css("transform","none");
-//   $($img).css("opacity","1");
-// });
+const dropdown_btn=document.querySelector("#dropdown-nav button");
+dropdown_btn.addEventListener("click",()=>{
+  const dropdown=document.querySelector("#dropdown");
+  if(dropdown.style.display=="none")
+    dropdown.style.display="block";
+  else
+    dropdown.style.display="none";
+});
 
-//
-// $(".pets-list span").mouseenter(function(){
-//   $(".pets-list img").css("transform","scale(1.1)");
-//   $(".pets-list img").css("opacity","0.15");
-// });
-// $(".pets-list span").mouseleave(function(){
-//   $(".pets-list img").css("transform","none");
-//   $(".pets-list img").css("opacity","1");
-// });
-
-
+window.onclick=function(event){
+  if(!event.target.matches("#dropdown-nav button") && !event.target.matches("#dropdown-nav button i"))
+  {
+    document.querySelector("#dropdown").style.display="none";
+  }
+}
 
 
 
