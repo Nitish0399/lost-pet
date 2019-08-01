@@ -30,7 +30,7 @@
             <a href="view-pets.php">View Pets</a>
           </div>
         </div>
-      </header>
+      </header> 
       <main>
         <p>The information for this page is updated daily. If you do not see the animal you are looking for, check back tomorrow.
            If you recogize your pet on this website, please read <a href="">What is the cost to reedem my animal</a> on the Frequently Asked Questions page

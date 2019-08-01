@@ -1,7 +1,14 @@
 header{
+  position: relative;
   text-align: center;
-  background-color:lightyellow;
+  background-color:#dfe8ff;
   height:130px;
+}
+.head{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
 }
 body{
   background-color:#f7f7f7;
@@ -10,7 +17,7 @@ body{
 }
 #logo{
   border-radius:50%;
-  margin: 10px 20px 25px 50px;
+  margin: 15px 20px 25px 0;
   width:80px;
 }
 
@@ -22,46 +29,41 @@ h1{
   border-bottom:7px solid #f7f020;
   border-radius: 10px;
 }
-#slider img{
-  width:750px;
-  height:500px;
-  margin-left:100px;
-  margin-top:70px;
-  border:1px solid ;
-  border-radius:6px;
-  transition:1s;
+#slider{
+  width:100vw;
+  height:calc(100vh - 130px - 60px);
 }
-.wrap{
-  box-sizing:border-box;
-  background: linear-gradient(to left,#ffffb5,#cdffc1 70%);
-  min-height:calc(100vh - 130px - 60px);
+#slider img{
+  width:100vw;
+  height:calc(100vh - 130px - 60px);
+  filter:blur(10px);
 }
 .wrapper{
   min-height:calc(100vh - 60px);
 }
 form{
-  position:absolute;
-  border:2px solid #f7f7f7;
-  right:200px;
-  top:250px;
-  width:15%;
-  border-radius:2%;
-  padding:1px 40px 60px 40px;
-  background-color: #f7f7f7;
+  position: absolute;
+  z-index: 1;
+  border: 2px solid #000000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 330px;
+  border-radius: 2%;
+  padding: 10px 40px 90px 40px;
+  background-color: #ffffff;
   box-shadow: 0 10px 13px 0 rgba(0,0,0,0.2), 0 13px 16px rgba(0,0,0,0.15);
-
-}
-.form-container{
-  margin-top:-10px;
 }
 form h2{
-  font-size: 30px;
+  color: seagreen;
+  font-size: 32px;
   font-weight: bold;
-  text-align:center;
-  padding-bottom:5px;
-  border-bottom: 3px solid #2b2b2b;
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 3px solid seagreen;
 }
 label{
+  color:#5d5d5d;
   font-size:20px;
   display:block;
   padding:10px;
@@ -71,12 +73,10 @@ input{
   width:80%;
   height:20px;
   padding:5px;
+  border:1px solid #5d5d5d;
   font-family:cursive;
   font-size:18px;
   margin-bottom:15px;
-}
-.form_elements{
-  position:relative;
 }
 .err_msg{
   position: absolute;
@@ -86,7 +86,7 @@ input{
 }
 .buttons{
   position:relative;
-  margin-top:20px;
+  margin-top:25px;
   height:20px;
 }
 #caution{
@@ -96,7 +96,7 @@ input{
 }
 .btn{
   position:absolute;
-  top:10px;
+  top:20px;
   width:110px;
   height:37px;
   font-family: system-ui;
@@ -109,7 +109,7 @@ input{
   box-shadow: 0 3px 10px 0 rgba(0,0,0,0.2), 0 4px 15px 0 rgba(0,0,0,0.19);
 }
 .login{
-  left:0;
+  left:80px;
   background-color: #00ce2c;
 }
 .signup{
@@ -130,7 +130,7 @@ input{
  }
 footer{
   position:relative;
-  background-color:lightyellow;
+  background-color:#dfe8ff;
   margin-bottom:0;
   width:100%;
   height:60px;
@@ -158,4 +158,38 @@ footer button:hover{
 }
 footer button:focus{
   outline:none;
+}
+
+@media(max-width:525px)
+{
+  #slider{
+    display: none;
+  }
+  form{
+    width: 100%;
+    height:calc(100vh - 130px - 60px);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  form h2{
+    margin: 60px 40px 45px 40px;
+
+  }
+  .form-container{
+    margin:0 50px;
+  }
+  input{
+    width:90%;
+    margin:0 auto 20px auto;
+    padding:7px;
+  }
+  .login{
+    left:40%;
+    /* transform: translateX(-50%); */
+  }
+  .signup{
+    right:10%;
+  }
 }

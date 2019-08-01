@@ -73,10 +73,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <body>
   <div class="wrapper">
     <header>
-      <img id="logo" src="../Pet images/logo.png" alt="LOGO">
-      <h1>Pet Care</h1>
+      <div class="head">
+        <img id="logo" src="../Pet images/logo.png" alt="LOGO">
+        <h1>Pet Care</h1>
+      </div>
     </header>
-    <div class="wrap">
+    <div>
       <div id="slider">
         <img src="../Pet images/1.jpg">
       </div>
