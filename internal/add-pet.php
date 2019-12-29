@@ -141,7 +141,7 @@ mysqli_close($conn);
             </ul>
             <button type="submit">Submit</button>
           </form>
-        <button type="button">Back</button>
+        <button type="button" onclick="window.location.href='add-pet.php'">Back</button>
       </main>
       <div class="user_profile">
         <h3>Welcome, </h3>

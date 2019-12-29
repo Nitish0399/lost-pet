@@ -38,7 +38,6 @@ h1{
 }
 .main-nav a:hover{
   transform: scale(1.01);
-  /* border: none; */
   box-shadow:4px 4px 6px 0px rgba(0,0,0,0.2);
   transition: 0.1s;
 }

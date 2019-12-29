@@ -18,7 +18,8 @@
           <a href="ftk.html">Facts To Know</a>
           <a href="faq.html">FAQ</a>
           <a href="license.html">Licensing</a>
-          <a href="view-pets.php">View Pets</a>
+          <a href="view-pets.php" style="transform: scale(1.01); box-shadow:4px 4px 6px 0px rgba(0,0,0,0.2);">View Pets</a>
+          <a href="reporting.php">Report</a>
         </nav>
         <div id="dropdown-nav">
           <button type="button"><i class='fas fa-angle-double-down'></i></button>
@@ -28,9 +29,10 @@
             <a href="faq.html">FAQ</a>
             <a href="license.html">Licensing</a>
             <a href="view-pets.php">View Pets</a>
+            <a href="reporting.php">Report</a>
           </div>
         </div>
-      </header> 
+      </header>
       <main>
         <p>The information for this page is updated daily. If you do not see the animal you are looking for, check back tomorrow.
            If you recogize your pet on this website, please read <a href="">What is the cost to reedem my animal</a> on the Frequently Asked Questions page

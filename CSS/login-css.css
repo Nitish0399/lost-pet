@@ -82,7 +82,7 @@ input{
   position: absolute;
   display: block;
   color: red;
-  top: 78px;
+  top: 275px;
 }
 .buttons{
   position:relative;
@@ -162,19 +162,30 @@ footer button:focus{
 
 @media(max-width:525px)
 {
+  #logo{
+    margin: 20px 20px 0 0;
+  }
+  .head{
+    position: static;
+    transform: none;
+  }
   #slider{
     display: none;
   }
+
   form{
+    box-sizing: border-box;
+    position:static;
+    transform:none;
     width: 100%;
     height:calc(100vh - 130px - 60px);
     border: none;
     border-radius: 0;
-    padding: 0;
+    padding: 60px 0 0 0;
     box-shadow: none;
   }
   form h2{
-    margin: 60px 40px 45px 40px;
+    margin: 0 40px 45px 40px;
 
   }
   .form-container{
@@ -186,10 +197,27 @@ footer button:focus{
     padding:7px;
   }
   .login{
-    left:40%;
+    left:60px;
     /* transform: translateX(-50%); */
   }
   .signup{
-    right:10%;
+    left:200px;
+  }
+  .err_msg {
+    left: 63px;
+    top: 462px;
+  }
+}
+@media(max-width:365px)
+{
+  .login{
+    left:55px;
+  }
+  .signup{
+    top:80px;
+    left:55px;
+  }
+  footer button{
+    right:25px;
   }
 }

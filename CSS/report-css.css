@@ -1,0 +1,83 @@
+@import "info-css.css";
+
+header{
+  position:sticky;
+}
+.wrapper{
+  min-height:calc(100vh - 60px);
+}
+form{
+  margin:70px auto 50px auto;
+  border:2px solid #f7f7f7;
+  width:35%;
+  border-radius:2%;
+  padding:1px 40px 55px 40px;
+  background-color: white;
+  box-shadow: 0 10px 13px 0 rgba(0,0,0,0.2), 0 13px 16px rgba(0,0,0,0.15);
+}
+form h2{
+  font-size: 31px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #9085b1;
+  color: #5d5d5d;
+}
+ul{
+  margin:40px 0;
+}
+ul li{
+  display:inline-block;
+  margin:10px 10px 0 10px;
+  padding-right:40px;
+  list-style: none;
+  width:29%;
+  font-size: 18px;
+}
+input{
+  width: 180px;
+  height: 20px;
+  font-size: 17px;
+  margin-top:13px;
+  margin-left:30px;
+}
+select{
+  font-size:17px;
+  margin-left:30px;
+}
+label{
+  margin:0 0 0 49px;
+  font-size:18px;
+}
+input:last-child{
+  height:25px;
+}
+
+input[type='file']{
+  width:220px;
+}
+button,input:focus{
+  outline:none;
+}
+button[type="submit"]{
+  display: inline-block;
+  margin-left: 45%;
+  width: 80px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  background-color: #e52929;
+  color: white;
+  font-family: unset;
+  box-shadow: 0 6px 5px 0 rgba(0,0,0,0.1);
+  border-radius: 3px;
+}
+button[type="submit"]:hover{
+  background-color: #ce1a1a;
+}
+#result{
+  display: none;
+  font-size: 17px;
+  margin-left: 15px
+}
